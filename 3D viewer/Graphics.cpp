@@ -63,37 +63,10 @@ void Graphics::FillObject(obj o)
 		}
 	for (auto &t : o.vecTri)
 	{
-		/*	const coord& v0 = t.vertices[0];
-			const coord& v1 = t.vertices[1];
-			const coord& v2 = t.vertices[2];
-			t.culled = (v1 - v0) % (v2 - v0) * v0 >= 0.0f;*/
-
 		coord& v0 = t.vertices[0];
 		coord& v1 = t.vertices[1];
 		coord& v2 = t.vertices[2];
-
-		if (v1.z < v0.z)
-		{
-			std::swap(v0.x, v1.x);
-			std::swap(v0.y, v1.y);
-			std::swap(v0.z, v1.z);
-		}
-		if (v2.z < v1.z)
-		{
-		
-			std::swap(v2.x, v1.x);
-			std::swap(v2.y, v1.y);
-			std::swap(v2.z, v1.z);
-		}
-		if (v1.z < v0.z)
-		{
-			std::swap(v0.x, v1.x);
-			std::swap(v0.y, v1.y);
-			std::swap(v0.z, v1.z);
-		}
-
 		t.culled = (v1 - v0) % (v2 - v0) * v0 >= 0.0f;
-
 	}
 
 	for (auto &t : o.vecTri)
@@ -101,7 +74,7 @@ void Graphics::FillObject(obj o)
 			transform(v);
 
 	for (auto &t : o.vecTri)
-		if ((!t.culled)||1)FillTriangle(t.vertices[0], t.vertices[1], t.vertices[2], t.colour);
+		if (!t.culled)FillTriangle(t.vertices[0], t.vertices[1], t.vertices[2], t.colour);
 }
 //void Graphics::FillObject(obj o)
 //{
