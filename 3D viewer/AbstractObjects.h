@@ -220,14 +220,11 @@ public:
 	{
 		return coord(*this) /= rhs;
 	}
-	//bool	operator==(const coord &rhs) const
-	//{
-	//	return (x == rhs.x && y == rhs.y && rhs.z = z);
-	//}
-	//bool	operator!=(const coord &rhs) const
-	//{
-	//	return !(*this == rhs);
-	//}
+
+	coord InterpolateTo( const coord& dest, float alpha)
+	{
+		return *this + (dest - *this) * alpha;
+	}
 
 	~coord() {}
 };

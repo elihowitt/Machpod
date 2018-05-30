@@ -125,6 +125,7 @@
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="olcConsoleGameEngine.h" />
     <ClInclude Include="Terms.h" />
+    <ClInclude Include="textureVertex.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="dragon.txt" />
