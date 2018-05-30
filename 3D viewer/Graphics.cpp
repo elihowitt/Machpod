@@ -273,9 +273,9 @@ void Graphics::FileToObj(obj& o, wstring ws)//, COLOUR col = FG_WHITE)
 			f >> s.y;
 			f >> s.z;
 
-			s.x /= 1000;
-			s.y /= 1000;
-			s.z /= 1000;
+			s.x /= 0.2;
+			s.y /= 0.2;
+			s.z /= 0.2;
 
 			vecC.push_back(s);
 			break;
@@ -287,8 +287,8 @@ void Graphics::FileToObj(obj& o, wstring ws)//, COLOUR col = FG_WHITE)
 
 			///Take notis if the files uses array iterators or we need to subtrackt 1.
 			//k = { vecC[s.x ], vecC[s.y ], vecC[s.z ], FG_BLUE };//col };
-			//k = { vecC[s.x - 1], vecC[s.y - 1], vecC[s.z - 1], ARR_COLOURS[rand() % 16] };//col };
-			k = { vecC[s.x - 1], vecC[s.y - 1], vecC[s.z - 1], FG_WHITE };//col };
+			k = { vecC[s.x - 1], vecC[s.y - 1], vecC[s.z - 1], ARR_COLOURS[rand() % 16] };//col };
+			//k = { vecC[s.x - 1], vecC[s.y - 1], vecC[s.z - 1], FG_WHITE };//col };
 
 			vecT.push_back(k);
 
