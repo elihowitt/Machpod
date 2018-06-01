@@ -67,17 +67,17 @@ protected:
 			{ cube.vecCoords[0], cube.vecCoords[4] , cube.vecCoords[2], ARR_COLOURS[12]},
 			{ cube.vecCoords[2], cube.vecCoords[4] , cube.vecCoords[6], ARR_COLOURS[4]},
 																	  	
-			{ cube.vecCoords[0], cube.vecCoords[1] , cube.vecCoords[4], ARR_COLOURS[15]},
+			{ cube.vecCoords[0], cube.vecCoords[1] , cube.vecCoords[4], ARR_COLOURS[8]},
 			{ cube.vecCoords[1], cube.vecCoords[5] , cube.vecCoords[4], ARR_COLOURS[4]},
 		};
 		//Bobn
-		//vecObj.push_back(cube);
+		vecObj.push_back(cube);
 
 		regSquare.vecCoords = {
-			{ -l,0,0 },//0
-			{ 0,l,0 },//1
-			{l,0,0 },//2
-		{ 0,-l,0 },//3
+			{ -l,0,4 },//0
+			{ 0,l,4 },//1
+			{l,0,4 },//2
+			{ 0,-l,4 },//3
 		};
 		regSquare.vecTri.push_back({ regSquare.vecCoords[0],regSquare.vecCoords[1] ,regSquare.vecCoords[2] });
 		regSquare.vecTri.push_back({ regSquare.vecCoords[0],regSquare.vecCoords[3] ,regSquare.vecCoords[2] });
@@ -137,9 +137,13 @@ protected:
 			//WireObject(o);
 		}
 
+		//FillTriangle(regSquare.vecCoords[0], regSquare.vecCoords[1], regSquare.vecCoords[2], FG_BLUE);
+		//FillTriangle(regSquare.vecCoords[3], regSquare.vecCoords[4], regSquare.vecCoords[5], FG_BLUE);
+		//FillTriangle({ -l, 0, 4 }, { l, 0, 4 }, { 0, l, 4 }, FG_BLUE);
 
-		DrawTriangleTex(regSquare.vecTex[0], regSquare.vecTex[1], regSquare.vecTex[2], *spriteThing);
-		DrawTriangleTex(regSquare.vecTex[3], regSquare.vecTex[4], regSquare.vecTex[5], *spriteThing);
+
+		//DrawTriangleTex(regSquare.vecTex[0], regSquare.vecTex[1], regSquare.vecTex[2], *spriteThing);
+		//DrawTriangleTex(regSquare.vecTex[3], regSquare.vecTex[4], regSquare.vecTex[5], *spriteThing);
 
 		
 		return true;

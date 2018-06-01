@@ -2,8 +2,6 @@
 #include "olcConsoleGameEngine.h"
 #include"Terms.h"
 #include"AbstractObjects.h"
-#include"textureVertex.h"
-
 
 using namespace term;
 
