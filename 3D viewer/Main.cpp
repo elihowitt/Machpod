@@ -14,8 +14,13 @@ public:
 		m_sAppName = L'Projector';
 	}
 private:
+	olcSprite * spriteThing;
+
+
 	float l = 0.2f;
 	obj cube; 
+	obj regSquare;
+
 	coord trans, sc;
 	
 	obj teaPot;
@@ -28,6 +33,7 @@ private:
 protected:
 	virtual bool OnUserCreate()
 	{
+		spriteThing = new olcSprite(L"spriteThing.spr");
 
 		//FileToObj(rabbit, L"rabbit.txt");
 		//vecObj.push_back(rabbit);
@@ -65,7 +71,42 @@ protected:
 			{ cube.vecCoords[1], cube.vecCoords[5] , cube.vecCoords[4], ARR_COLOURS[4]},
 		};
 		//Bobn
-		vecObj.push_back(cube);
+		//vecObj.push_back(cube);
+
+		regSquare.vecCoords = {
+			{ -l,0,0 },//0
+			{ 0,l,0 },//1
+			{l,0,0 },//2
+		{ 0,-l,0 },//3
+		};
+		regSquare.vecTri.push_back({ regSquare.vecCoords[0],regSquare.vecCoords[1] ,regSquare.vecCoords[2] });
+		regSquare.vecTri.push_back({ regSquare.vecCoords[0],regSquare.vecCoords[3] ,regSquare.vecCoords[2] });
+		regSquare.vecTex = {
+			{
+				regSquare.vecCoords[0],
+				{0,0,0}
+			},
+			{
+				regSquare.vecCoords[1],
+				{ 0,1,0 } 
+			},
+			{
+				regSquare.vecCoords[2],
+				{ 1,1,0 } 
+			},
+			{
+				regSquare.vecCoords[0],
+				{0,0,0}
+			},
+			{
+				regSquare.vecCoords[3],
+				{1,0,0}
+			},
+			{
+				regSquare.vecCoords[2],
+				{ 1,1,0 } 
+			}
+		};
 
 		return true;
 	}
@@ -95,6 +136,10 @@ protected:
 			FillObject(o);
 			//WireObject(o);
 		}
+
+
+		DrawTriangleTex(regSquare.vecTex[0], regSquare.vecTex[1], regSquare.vecTex[2], *spriteThing);
+		DrawTriangleTex(regSquare.vecTex[3], regSquare.vecTex[4], regSquare.vecTex[5], *spriteThing);
 
 		
 		return true;

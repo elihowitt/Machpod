@@ -1,8 +1,11 @@
 #pragma once
 #include<fstream>
 #include<cmath>
+#include <algorithm>
 namespace term
 {
+
+
 	const int WIDTH = 320, HEIGHT = 320;
 	const int FONW = 2, FONH = 2;
 

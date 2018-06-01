@@ -1,5 +1,7 @@
 #pragma once
 
+#define NOMINMAX
+
 #ifndef UNICODE
 #error Please enable UNICODE for your compiler! VS: Project Properties -> General -> \
 Character Set -> Use Unicode. Thanks! For now, I'll try enabling it for you - Javidx9
@@ -111,7 +113,7 @@ public:
 		else
 			return m_Glyphs[y * nWidth + x];
 	}
-	short GetColour(int x, int y)
+	short GetColour(int x, int y) const
 	{
 		if (x <0 || x >= nWidth || y < 0 || y >= nHeight)
 			return FG_BLACK;
@@ -265,7 +267,7 @@ public:
 		return 1;
 	}
 
-	virtual void Draw(int x, int y, wchar_t c = 0x2588, short col = 0x000F)
+	virtual void Draw(int x, int y, wchar_t c = 0x2588, short col = 0x000F) const
 	{
 		if (x >= 0 && x < m_nScreenWidth && y >= 0 && y < m_nScreenHeight)
 		{

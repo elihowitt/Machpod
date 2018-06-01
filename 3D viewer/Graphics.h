@@ -2,6 +2,7 @@
 #include "olcConsoleGameEngine.h"
 #include"Terms.h"
 #include"AbstractObjects.h"
+#include"textureVertex.h"
 
 
 using namespace term;
@@ -30,7 +31,11 @@ public:
 	void FillFlatBottomTriangle(const coord&, const coord&, const coord&, COLOUR);
 	void FillFlatTopTriangle(const coord&, const coord&, const coord&, COLOUR);
 
-
+	void DrawTriangleTex(const TexVertex& v0, const TexVertex& v1, const TexVertex& v2, const olcSprite& tex);
+	void DrawFlatTopTriangleTex(const TexVertex& v0, const TexVertex& v1, const TexVertex& v2, const olcSprite& tex);
+	void DrawFlatBottomTriangleTex(const TexVertex& v0, const TexVertex& v1, const TexVertex& v2, const olcSprite& tex);
+	void DrawFlatTriangleTex(const TexVertex& v0, const TexVertex& v1, const TexVertex& v2, const olcSprite& tex,
+		const TexVertex& dv0, const TexVertex& dv1, TexVertex& itEdge1);
 
 	COLOUR ARR_COLOURS[15]{
 

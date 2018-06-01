@@ -1,6 +1,7 @@
 #pragma once
 #include "Terms.h"
 #include"olcConsoleGameEngine.h"
+#include"textureVertex.h"
 #include<vector>
 
 using namespace term;
@@ -70,53 +71,6 @@ public:
 		y = a[1];
 		z = a[2];
 	}
-
-	//////coord	operator-() const
-	//////{
-	//////	return coord(-x, -y, -z);
-	//////}
-	//////coord&	operator=(const coord &rhs)
-	//////{
-	//////	x = rhs.x;
-	//////	y = rhs.y;
-	//////	z = rhs.z;
-	//////	return *this;
-	//////}
-	//////coord&	operator+=(const coord &rhs)
-	//////{
-	//////	x += rhs.x;
-	//////	y += rhs.y;
-	//////	z += rhs.z;
-	//////	return *this;
-	//////}
-	//////coord	operator+(const coord &rhs) const
-	//////{
-	//////	return coord(*this) += rhs;
-	//////}
-	//////coord&	operator-=(const coord &rhs)
-	//////{
-	//////	x -= rhs.x;
-	//////	y -= rhs.y;
-	//////	z -= rhs.z;
-	//////	return *this;
-	//////}
-	//////coord	operator-(const coord &rhs) const
-	//////{
-	//////	return coord(*this) -= rhs;
-	//////}
-	//////coord operator*(coord c)
-	////////float operator*(coord c)
-	//////{
-	//////	//return x*c.x + y*c.y + z*c.z;
-	//////	x *= c.x;
-	//////	y *= c.y;
-	//////	z *= c.z;
-	//////	return *this;
-	//////}
-	//////void operator*=(coord c)
-	//////{
-	//////	*this = *this * c;
-	//////}
 	coord operator*(mat3 m)
 	{
 		float val[]{ x,y,z };
@@ -130,29 +84,7 @@ public:
 	void operator*=(mat3 m)
 	{
 		*this = *this * m;
-	}
-	///////*coord operator*(const float f&)
-	//////{
-	//////	return coord(*this) *= f;
-	//////}*/
-	//////coord operator%(const coord& c)const
-	//////{
-	//////	return coord(
-	//////		y*c.z - z*c.y,
-	//////		z*c.x - x*c.z,
-	//////		x*c.y - y*c.x
-	//////	);
-	//////}
-
-	/*bool operator>(const float f)
-	{
-		return x > f && y > f && z > f;
-	}
-	bool operator>=(const float f)
-	{
-		return x >= f && y >= f && z >= f;
-	}*/
-	
+	}	
 
 	coord	operator-() const
 	{
@@ -221,7 +153,7 @@ public:
 		return coord(*this) /= rhs;
 	}
 
-	coord InterpolateTo( const coord& dest, float alpha)
+	coord	InterpolateTo(const coord& dest, float alpha) const
 	{
 		return *this + (dest - *this) * alpha;
 	}
@@ -252,7 +184,7 @@ public:
 	obj(float r = 5.0f, float t = 3.0f, float s = 2.0f) { rx = 0; ry = 0; rz = 0; rs = r; ts = t; ss = s; }
 	obj(std::vector<coord> vecC, float r = 5.0f, float t = 3.0f, float s = 2.0f)
 	{
-		vecCoords = vecC; rx = 0; ry = 0; rz = 0;  rs = r; ts = t; ss = s;
+		vecCoords = vecC; rx = 0; ry = 0; rz = 0;  rs = r; ts = t; ss = s; vecTex.clear();
 	}
 	obj(std::vector<coord> vecC, std::vector<tri> vecT, float r = 5.0f, float t = 3.0f, float s = 2.0f)
 	{
@@ -261,7 +193,8 @@ public:
 
 	std::vector<coord> vecCoords;
 	std::vector<tri> vecTri;
-	
+	std::vector<TexVertex> vecTex;
+
 	//Orientation.
 	float rx, ry, rz;
 	//Speeds

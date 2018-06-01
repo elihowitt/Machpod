@@ -1,6 +1,6 @@
 #pragma once
 
-#include "AbstractObjects.h"""
+#include "AbstractObjects.h"
 
 class TexVertex
 {
